@@ -25,7 +25,7 @@ public class APITarifa20AActual {
     public static final ObjectMapper MAPPER = new ObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL);
     public static final MapType HASHMAP_MAPTYPE = MAPPER.getTypeFactory().constructMapType(LinkedHashMap.class, String.class, Object.class);
     
-    private static final String API_TOKEN = "x";
+    //private static final String API_TOKEN = "x";
     private static final String MAIN_URL = "https://api.esios.ree.es/indicators/1013?start_date=#START#&end_date=#END#";
     
     public static String getPrecioActual() {
@@ -55,7 +55,8 @@ public class APITarifa20AActual {
             con.setRequestProperty("Accept", "application/json; application/vnd.esios-api-v1+json");
             con.setRequestProperty("Content-Type", "application/json");
             con.setRequestProperty("Host", "api.esios.ree.es");
-            con.setRequestProperty("Authorization", "Token token=" + API_TOKEN);
+            System.out.println("hola");
+            con.setRequestProperty("Authorization", "Token token=" + APITarifa20A.API_TOKEN);
             int responseCode = con.getResponseCode();
             if (responseCode != 200) { 
                 System.err.println("Error REST Call: " + inputStreamtoString(con.getErrorStream()));
